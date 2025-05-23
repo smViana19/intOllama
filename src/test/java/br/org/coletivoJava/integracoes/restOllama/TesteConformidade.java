@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.org.coletivoJava.integracoes.restMavEmail;
+package br.org.coletivoJava.integracoes.restOllama;
 
-import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOlhamaChat;
-import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOllhamaAgenteModel;
+import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOllamaChat;
+import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOllamaAgenteModel;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.integracao.rocketChat.implementacaoRCRest.ConfigCoreOllhamaTestesRegraNegocio;
+import com.super_bits.modulosSB.SBCore.integracao.rocketChat.implementacaoRCRest.ConfigCoreOllamaTestesRegraNegocio;
 import org.junit.Test;
 import testes.testesSupers.TestesApiRest;
 
@@ -21,10 +21,10 @@ public class TesteConformidade extends TestesApiRest {
 
     @Test
     public void testes() {
-        SBCore.configurar(new ConfigCoreOllhamaTestesRegraNegocio(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
+        SBCore.configurar(new ConfigCoreOllamaTestesRegraNegocio(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
 
-        gerarCodigosChamadasEndpoint(FabApiRestOlhamaChat.class);
-        gerarCodigosChamadasEndpoint(FabApiRestOllhamaAgenteModel.class);
+        gerarCodigosChamadasEndpoint(FabApiRestOllamaChat.class);
+        gerarCodigosChamadasEndpoint(FabApiRestOllamaAgenteModel.class);
 
 //        RespostaWebServiceSimples resposta = FabApiRestRokcetChatV1Users.DIRECT_MENSAGENS_CONTADORES.getAcao().getResposta();
         //      System.out.println(resposta);

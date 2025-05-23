@@ -4,7 +4,6 @@
  */
 package br.org.coletivoJava.integracoes.ollama.api.util;
 
-import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 import jakarta.json.JsonObject;
 
@@ -12,14 +11,13 @@ import jakarta.json.JsonObject;
  *
  * @author salvio
  */
-public class UtilOlhamaConversas {
+public class UtilOllamaConversas {
 
     public static void atualizarConversa(JsonObject pConversa) {
-
     }
 
     public static void lerConversa(ItfUsuario pUsuario, String nomePersona) {
-        // Salvar json das conversas em: SBCore.getServicoArquivosDeEntidade().getEndrLocalResources()//
+        // TODO: Salvar json das conversas em: SBCore.getServicoArquivosDeEntidade().getEndrLocalResources()//
     }
 
 }
