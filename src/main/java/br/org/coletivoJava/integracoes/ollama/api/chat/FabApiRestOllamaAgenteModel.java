@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package br.org.coletivoJava.integracoes.ollama.api.chat;
 
@@ -13,24 +12,28 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.servicoRegis
 
 /**
  *
- * @author sfurbino
+ * @author salvio
  */
 @InfoConfigRestClientIntegracao(enderecosDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md",
         tipoAutenticacao = FabTipoAutenticacaoRest.USUARIO_SENHA_SIMPLES,
         nomeIntegracao = FabConfigOllama.NOME_INTEGRACAO,
         configuracao = FabConfigOllama.class
 )
-public enum FabApiRestOlhamaChat implements ItfFabricaIntegracaoRest {
-
-    @InfoConsumoRestService(getPachServico = "/api/generate",
+public enum FabApiRestOllamaAgenteModel implements ItfFabricaIntegracaoRest {
+    @InfoConsumoRestService(getPachServico = "/api/create",
             tipoConexao = FabTipoConexaoRest.POST,
             aceitarCertificadoDeHostNaoConfiavel = true,
             urlDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md")
-    CONVERSA_NOVA_SESSAO,
-    @InfoConsumoRestService(getPachServico = "/api/generate",
-            tipoConexao = FabTipoConexaoRest.POST,
+    MODELO_CRIAR,
+    @InfoConsumoRestService(getPachServico = "/api/create",
+            tipoConexao = FabTipoConexaoRest.PUT,
             aceitarCertificadoDeHostNaoConfiavel = true,
             urlDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md")
-    CONVERSA_OBTER_RESPOSTA_IA;
+    MODELO_ATUALIZAR,
+    @InfoConsumoRestService(getPachServico = "/api/delete",
+            tipoConexao = FabTipoConexaoRest.DELETE,
+            aceitarCertificadoDeHostNaoConfiavel = true,
+            urlDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md")
+    MODELO_REMOVER;
 
 }

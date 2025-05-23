@@ -1,7 +1,7 @@
-package br.org.coletivoJava.integracoes.restIntolhamma.api;
+package br.org.coletivoJava.integracoes.restIntollama.api;
 
 import javax.inject.Qualifier;
-import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOlhamaChat;
+import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOllamaChat;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,7 +12,7 @@ import java.lang.annotation.ElementType;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface InfoIntegracaoRestIntolhammaChat {
+public @interface InfoIntegracaoRestIntollamaChat {
 
-	FabApiRestOlhamaChat tipo();
+	FabApiRestOllamaChat tipo();
 }

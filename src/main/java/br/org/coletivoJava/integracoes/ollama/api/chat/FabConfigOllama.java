@@ -18,12 +18,11 @@ public enum FabConfigOllama implements ItfFabConfigModulo {
     CHAVE_PUBLICA,
     @InfoPropriedadeConfigRestIntegracao(tipoPropriedade = FabPropriedadeModuloIntegracaoOauth.URL_SERVIDOR_API)
     URL_OLLAMA_SERVER_API,;
-    public static final String NOME_INTEGRACAO = "intOlhamma";
+    public static final String NOME_INTEGRACAO = "intOllama";
 
     @Override
     public String getValorPadrao() {
         switch (this) {
-
             case CHAVE_PUBLICA:
                 break;
             case URL_OLLAMA_SERVER_API:

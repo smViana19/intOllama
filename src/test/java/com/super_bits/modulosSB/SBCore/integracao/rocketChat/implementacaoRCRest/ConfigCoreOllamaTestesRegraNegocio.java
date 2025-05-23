@@ -14,7 +14,7 @@ import com.super_bits.modulosSB.SBCore.ConfigGeral.ItfConfiguracaoCoreCustomizav
  * @since 09/12/2019
  * @version 1.0
  */
-public class ConfigCoreOllhamaTestesRegraNegocio extends ConfiguradorCoreDeProjetoJarAbstrato {
+public class ConfigCoreOllamaTestesRegraNegocio extends ConfiguradorCoreDeProjetoJarAbstrato {
 
     @Override
     public void defineFabricasDeACao(ItfConfiguracaoCoreCustomizavel pConfig) {
