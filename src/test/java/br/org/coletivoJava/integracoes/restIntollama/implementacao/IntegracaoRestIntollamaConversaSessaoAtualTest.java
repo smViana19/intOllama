@@ -1,0 +1,61 @@
+package br.org.coletivoJava.integracoes.restIntollama.implementacao;
+
+import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOllamaChat;
+import br.org.coletivoJava.integracoes.ollama.api.util.UtilOllamaConversas;
+import br.org.coletivoJava.integracoes.ollama.api.util.UtilOllamaConversasTest;
+import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
+import com.super_bits.modulosSB.SBCore.integracao.rocketChat.implementacaoRCRest.ConfigCoreOllamaTestesRegraNegocio;
+import jakarta.json.Json;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonArrayBuilder;
+import jakarta.json.JsonObject;
+import org.junit.Test;
+import org.slf4j.helpers.Util;
+
+import static org.junit.Assert.assertTrue;
+
+public class IntegracaoRestIntollamaConversaSessaoAtualTest {
+
+    @Test
+    public void testeChat() {
+        SBCore.configurar(new ConfigCoreOllamaTestesRegraNegocio(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
+        ItfRespostaWebServiceSimples respostaCriacao = FabApiRestOllamaChat.CONVERSA_SESSAO_ATUAL.getAcao("Qual é a sua função?").getResposta();
+        System.out.println("Resposta: " + respostaCriacao.getRespostaTexto());
+        assertTrue(respostaCriacao.isSucesso());
+    }
+
+    @Test
+    public void testeChatComHistorico() {
+        SBCore.configurar(new ConfigCoreOllamaTestesRegraNegocio(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
+        String chaveConversa = "teste123";
+        JsonObject conversa = UtilOllamaConversas.lerConversa(chaveConversa);
+        System.out.println(conversa);
+        UtilOllamaConversas.adicionarMensagem(chaveConversa, "user", "mas o que é a empresa?");
+
+        JsonObject conversaAtualizada = UtilOllamaConversas.lerConversa(chaveConversa);
+        JsonArray mensagens = conversaAtualizada.getJsonArray("messages");
+        System.out.println("Conversa atualizada: " + conversaAtualizada);
+
+        JsonArrayBuilder builder = Json.createArrayBuilder();
+        mensagens.forEach(builder::add);
+
+        JsonObject req = Json.createObjectBuilder()
+                .add("messages", builder.build())
+                .add("messages", builder.build())
+                .add("stream", false)
+                .add("keep_alive", "10m")
+                .build();
+
+        ItfRespostaWebServiceSimples respostaCriacao = FabApiRestOllamaChat.CONVERSA_SESSAO_ATUAL.getAcao(req.toString()).getResposta();
+
+        if (respostaCriacao.isSucesso()) {
+            String respostaIA = respostaCriacao.getRespostaTexto();
+            UtilOllamaConversas.adicionarMensagem(chaveConversa, "assistant", respostaIA);
+        }
+        System.out.println("Resposta: " + respostaCriacao.getRespostaTexto());
+
+        assertTrue(respostaCriacao.isSucesso());
+    }
+
+}
