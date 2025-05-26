@@ -11,7 +11,6 @@ import jakarta.json.JsonObject;
 @InfoIntegracaoRestIntollamaChat(tipo = FabApiRestOllamaChat.CONVERSA_OBTER_RESPOSTA_IA)
 public class IntegracaoRestIntollamaConversaObterRespostaIa extends AcaoApiIntegracaoAbstrato {
 
-//    private static final String NOME_MODELO = "tinyllama:1.1b";
     private static final String NOME_MODELO = "tinyllama:1.1b";
 
     public IntegracaoRestIntollamaConversaObterRespostaIa(

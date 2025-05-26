@@ -24,5 +24,4 @@ public class IntegracaoRestIntOllamaConversaObterRespostaIaTest {
         System.out.println("Resposta: " + resposta.getRespostaTexto());
         assertTrue(resposta.isSucesso());
     }
-
 }

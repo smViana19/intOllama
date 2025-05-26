@@ -24,7 +24,6 @@ public class GestaoTokenRestIntollama extends GestaoTokenChaveUnica {
 	public boolean validarToken() {
 		return false;
 	}
-
 	public GestaoTokenRestIntollama(final FabTipoAgenteClienteApi pTipoAgente,
 									final ItfUsuario pUsuario) {
 		super(FabApiRestOllamaChat.class, pTipoAgente, pUsuario);

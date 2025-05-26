@@ -51,18 +51,6 @@ public enum FabApiRestOllamaAgenteModel implements ItfFabricaIntegracaoRest {
             urlDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md")
     MODELO_CRIAR,
     /**
-     * Atualiza um modelo existente no sistema Ollama.
-     * <p>
-     * O modelo a ser atualizado é identificado pelo seu nome {@code model:tag}.
-     * </p>
-     * Endpoint da API: {@code /api/create} (método HTTP PUT).
-     */
-    @InfoConsumoRestService(getPachServico = "/api/create",
-            tipoConexao = FabTipoConexaoRest.PUT,
-            aceitarCertificadoDeHostNaoConfiavel = true,
-            urlDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md")
-    MODELO_ATUALIZAR,
-    /**
      * Exclui um modelo do sistema Ollama.
      * <p>
      * O modelo a ser excluído é identificado pelo seu nome {@code model:tag}.
