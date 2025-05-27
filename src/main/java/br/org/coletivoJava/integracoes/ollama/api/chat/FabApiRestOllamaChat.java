@@ -23,7 +23,7 @@ public enum FabApiRestOllamaChat implements ItfFabricaIntegracaoRest {
 
     @InfoConsumoRestService(getPachServico = "/api/generate",
             tipoConexao = FabTipoConexaoRest.POST,
-
+            parametrosPost = {"model", "prompt", "stream"},
             aceitarCertificadoDeHostNaoConfiavel = true,
             urlDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md")
     CONVERSA_OBTER_RESPOSTA_IA,

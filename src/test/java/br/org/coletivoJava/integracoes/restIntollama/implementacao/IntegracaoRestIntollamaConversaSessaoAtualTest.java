@@ -29,14 +29,14 @@ public class IntegracaoRestIntollamaConversaSessaoAtualTest {
     public void testeChatComHistorico() {
         SBCore.configurar(new ConfigCoreOllamaTestesRegraNegocio(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
         String chaveConversa = "suporte";
-        String promptPersona = """
-                Você é um assistente da empresa Casanova Digital.
-                - Sempre responda em português do Brasil.
-                - A sede da empresa é em **Belo Horizonte (MG)**. Nunca diga outra localização.
-                - Casanova é uma empresa especializada em **campanhas de marketing digital**.
-                - Seja sempre educado, objetivo e profissional com o usuário.
-                - Não invente informações. Se não souber, diga que não sabe.
-                """;
+        String promptPersona =
+                "Você é um assistente da empresa Casanova Digital.\n" +
+                        "- Sempre responda em português do Brasil.\n" +
+                        "- A sede da empresa é em **Belo Horizonte (MG)**. Nunca diga outra localização.\n" +
+                        "- Casanova é uma empresa especializada em **campanhas de marketing digital**.\n" +
+                        "- Seja sempre educado, objetivo e profissional com o usuário.\n" +
+                        "- Não invente informações. Se não souber, diga que não sabe.";
+
         JsonObject conversa = UtilOllamaConversas.lerConversa(chaveConversa);
         System.out.println(conversa);
         UtilOllamaConversas.adicionarMensagem(chaveConversa, "user", "a casanovadigital é uma empresa de marketing digital?");

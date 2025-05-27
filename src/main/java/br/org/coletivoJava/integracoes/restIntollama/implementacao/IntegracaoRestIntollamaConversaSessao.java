@@ -50,7 +50,11 @@ public class IntegracaoRestIntollamaConversaSessao
 
 	@Override
 	protected RespostaWebServiceSimples gerarRespostaTratamentoFino(RespostaWebServiceSimples pRespostaWSSemTratamento) {
-		UtilOlhamaTratamentoErro.gerarRespostaTratamentoFino(pRespostaWSSemTratamento);
-		return pRespostaWSSemTratamento;
+        try {
+            UtilOlhamaTratamentoErro.gerarRespostaTratamentoFino(pRespostaWSSemTratamento);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return pRespostaWSSemTratamento;
 	}
 }

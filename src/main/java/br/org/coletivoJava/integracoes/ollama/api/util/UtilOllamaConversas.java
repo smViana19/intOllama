@@ -16,7 +16,6 @@ import java.io.*;
  * @author salvio
  */
 public class UtilOllamaConversas {
-    //SBCore.getServicoArquivosDeEntidade().getEndrLocalResources()
     private static final String LOCAL_ARQUIVOS_JSON = SBCore.getServicoArquivosDeEntidade().getEndrLocalResources()+"/Ollama/conversasOllama/";
     private static final String MODELO = "CasanovaIA:latest";
 
