@@ -39,7 +39,6 @@
             <version>1.0.0-RC-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
-       
 
         <dependency>
             <groupId>br.org.coletivoJava.fw</groupId>
@@ -49,7 +48,25 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>br.org.coletivoJava.fw</groupId>
+            <artifactId>SBPersistencia</artifactId>
+            <version>1.0.0-RC-SNAPSHOT</version>
+        </dependency>
 
+        <dependency>
+            <groupId>br.org.coletivoJava.fw.modulos</groupId>
+            <artifactId>SBAcessosModel</artifactId>
+            <version>1.0.0-RC-SNAPSHOT</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>br.org.coletivoJava.fw</groupId>
+            <artifactId>SBTeste</artifactId>
+            <version>1.0.0-RC-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
 
 
         <dependency>
@@ -61,10 +78,8 @@
     </dependencies>
 
 
-
     <build>
         <plugins>
-
 
 
             <plugin>
@@ -85,12 +100,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>15</source>
-                    <target>15</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
-
 
 
         <resources>
@@ -100,7 +114,6 @@
 
             </resource>
         </resources>
-
 
 
     </build>
