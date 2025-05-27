@@ -2,9 +2,11 @@ package br.org.coletivoJava.model.persona;
 
 import com.super_bits.modulosSB.Persistencia.registro.persistidos.EntidadeSimples;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoCampo;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoCampoValorLogico;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoObjetoSB;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campo.FabTipoAtributoObjeto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -54,6 +56,10 @@ public class Persona extends EntidadeSimples {
 
     @InfoCampo(tipo = FabTipoAtributoObjeto.VERDADEIRO_FALSO, descricao = "Definicao se a Persona está ativa ou inativa", label = "Status Persona")
     private boolean status;
+
+    @Column(length = 10000)
+    @InfoCampoValorLogico(nomeCalculo = "Texto modelfile ")
+    private String textoModelFileIA;
 
     @Override
     public Long getId() {
@@ -169,5 +175,13 @@ public class Persona extends EntidadeSimples {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getTextoModelFileIA() {
+        return textoModelFileIA;
+    }
+
+    public void setTextoModelFileIA(String textoModelFileIA) {
+        this.textoModelFileIA = textoModelFileIA;
     }
 }
