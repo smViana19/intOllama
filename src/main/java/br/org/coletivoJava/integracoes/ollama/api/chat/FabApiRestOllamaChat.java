@@ -23,11 +23,7 @@ public enum FabApiRestOllamaChat implements ItfFabricaIntegracaoRest {
 
     @InfoConsumoRestService(getPachServico = "/api/generate",
             tipoConexao = FabTipoConexaoRest.POST,
-            aceitarCertificadoDeHostNaoConfiavel = true,
-            urlDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md")
-    CONVERSA_NOVA_SESSAO,
-    @InfoConsumoRestService(getPachServico = "/api/generate",
-            tipoConexao = FabTipoConexaoRest.POST,
+
             aceitarCertificadoDeHostNaoConfiavel = true,
             urlDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md")
     CONVERSA_OBTER_RESPOSTA_IA,
@@ -37,5 +33,5 @@ public enum FabApiRestOllamaChat implements ItfFabricaIntegracaoRest {
             tipoConexao = FabTipoConexaoRest.POST,
             aceitarCertificadoDeHostNaoConfiavel = true,
             urlDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md")
-    CONVERSA_SESSAO_ATUAL;
+    CONVERSA_SESSAO;
 }

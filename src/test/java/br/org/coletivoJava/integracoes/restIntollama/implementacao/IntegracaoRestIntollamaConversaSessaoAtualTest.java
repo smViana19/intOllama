@@ -20,7 +20,7 @@ public class IntegracaoRestIntollamaConversaSessaoAtualTest {
     @Test
     public void testeChat() {
         SBCore.configurar(new ConfigCoreOllamaTestesRegraNegocio(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        ItfRespostaWebServiceSimples respostaCriacao = FabApiRestOllamaChat.CONVERSA_SESSAO_ATUAL.getAcao("Qual é a sua função?").getResposta();
+        ItfRespostaWebServiceSimples respostaCriacao = FabApiRestOllamaChat.CONVERSA_SESSAO.getAcao("Qual é a sua função?").getResposta();
         System.out.println("Resposta: " + respostaCriacao.getRespostaTexto());
         assertTrue(respostaCriacao.isSucesso());
     }
@@ -28,10 +28,18 @@ public class IntegracaoRestIntollamaConversaSessaoAtualTest {
     @Test
     public void testeChatComHistorico() {
         SBCore.configurar(new ConfigCoreOllamaTestesRegraNegocio(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        String chaveConversa = "teste123";
+        String chaveConversa = "suporte";
+        String promptPersona = """
+                Você é um assistente da empresa Casanova Digital.
+                - Sempre responda em português do Brasil.
+                - A sede da empresa é em **Belo Horizonte (MG)**. Nunca diga outra localização.
+                - Casanova é uma empresa especializada em **campanhas de marketing digital**.
+                - Seja sempre educado, objetivo e profissional com o usuário.
+                - Não invente informações. Se não souber, diga que não sabe.
+                """;
         JsonObject conversa = UtilOllamaConversas.lerConversa(chaveConversa);
         System.out.println(conversa);
-        UtilOllamaConversas.adicionarMensagem(chaveConversa, "user", "mas o que é a empresa?");
+        UtilOllamaConversas.adicionarMensagem(chaveConversa, "user", "a casanovadigital é uma empresa de marketing digital?");
 
         JsonObject conversaAtualizada = UtilOllamaConversas.lerConversa(chaveConversa);
         JsonArray mensagens = conversaAtualizada.getJsonArray("messages");
@@ -47,7 +55,7 @@ public class IntegracaoRestIntollamaConversaSessaoAtualTest {
                 .add("keep_alive", "10m")
                 .build();
 
-        ItfRespostaWebServiceSimples respostaCriacao = FabApiRestOllamaChat.CONVERSA_SESSAO_ATUAL.getAcao(req.toString()).getResposta();
+        ItfRespostaWebServiceSimples respostaCriacao = FabApiRestOllamaChat.CONVERSA_SESSAO.getAcao(req.toString(), chaveConversa, promptPersona).getResposta();
 
         if (respostaCriacao.isSucesso()) {
             String respostaIA = respostaCriacao.getRespostaTexto();

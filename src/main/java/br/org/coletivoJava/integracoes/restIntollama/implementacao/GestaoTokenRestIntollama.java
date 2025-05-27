@@ -12,7 +12,7 @@ import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basic
 
 import java.util.Date;
 
-@InfoIntegracaoRestIntollamaChat(tipo = FabApiRestOllamaChat.CONVERSA_NOVA_SESSAO)
+@InfoIntegracaoRestIntollamaChat(tipo = FabApiRestOllamaChat.CONVERSA_SESSAO)
 public class GestaoTokenRestIntollama extends GestaoTokenChaveUnica {
 
 	@Override

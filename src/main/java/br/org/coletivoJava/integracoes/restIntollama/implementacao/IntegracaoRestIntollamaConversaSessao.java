@@ -3,28 +3,30 @@ package br.org.coletivoJava.integracoes.restIntollama.implementacao;
 import br.org.coletivoJava.integracoes.ollama.api.util.UtilOllamaConversas;
 import br.org.coletivoJava.integracoes.restIntollama.api.InfoIntegracaoRestIntollamaChat;
 import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOllamaChat;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.RespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
 import jakarta.json.*;
 
-@InfoIntegracaoRestIntollamaChat(tipo = FabApiRestOllamaChat.CONVERSA_SESSAO_ATUAL)
-public class IntegracaoRestIntollamaConversaSessaoAtual extends AcaoApiIntegracaoAbstrato {
-	private static final String NOME_MODELO = "CasanovaIA:latest";
-	public IntegracaoRestIntollamaConversaSessaoAtual(
+@InfoIntegracaoRestIntollamaChat(tipo = FabApiRestOllamaChat.CONVERSA_SESSAO)
+public class IntegracaoRestIntollamaConversaSessao
+		extends
+			AcaoApiIntegracaoAbstrato {
+
+	public IntegracaoRestIntollamaConversaSessao(
 			final FabTipoAgenteClienteApi pTipoAgente,
 			final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
-		super(FabApiRestOllamaChat.CONVERSA_SESSAO_ATUAL, pTipoAgente,
-				pUsuario, pParametro);
+		super(FabApiRestOllamaChat.CONVERSA_SESSAO, pTipoAgente, pUsuario,
+				pParametro);
 	}
 
 	@Override
 	public String gerarCorpoRequisicao() {
 		String novaMensagemUsuario = (String) getParametros()[0];
+		String chave = (String) getParametros()[1];
 
-		//TODO: CHAMAR A CHAVE POR PARAMETROS E N HARDCODED(CONFERIR COMO MELHORAR ISSO)
-
-		JsonObject conversa = UtilOllamaConversas.lerConversa("teste123");
+		JsonObject conversa = UtilOllamaConversas.lerConversa(chave);
 		JsonArray mensagensAnteriores = conversa.getJsonArray("messages");
 
 		JsonArrayBuilder mensagensArrayBuilder = Json.createArrayBuilder();
@@ -44,5 +46,11 @@ public class IntegracaoRestIntollamaConversaSessaoAtual extends AcaoApiIntegraca
 
 		return jsonPrincipal.toString();
 
+	}
+
+	@Override
+	protected RespostaWebServiceSimples gerarRespostaTratamentoFino(RespostaWebServiceSimples pRespostaWSSemTratamento) {
+		UtilOlhamaTratamentoErro.gerarRespostaTratamentoFino(pRespostaWSSemTratamento);
+		return pRespostaWSSemTratamento;
 	}
 }
