@@ -47,6 +47,7 @@ public enum FabApiRestOllamaAgenteModel implements ItfFabricaIntegracaoRest {
      */
     @InfoConsumoRestService(getPachServico = "/api/create",
             tipoConexao = FabTipoConexaoRest.POST,
+            parametrosPost = {"model", "system"},
             aceitarCertificadoDeHostNaoConfiavel = true,
             urlDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md")
     MODELO_CRIAR,
@@ -61,6 +62,6 @@ public enum FabApiRestOllamaAgenteModel implements ItfFabricaIntegracaoRest {
             tipoConexao = FabTipoConexaoRest.DELETE,
             aceitarCertificadoDeHostNaoConfiavel = true,
             urlDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md")
-    MODELO_REMOVER;
+    MODELO_REMOVER
 
 }

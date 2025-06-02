@@ -11,8 +11,6 @@ import jakarta.json.JsonObject;
 @InfoIntegracaoRestIntollamaChat(tipo = FabApiRestOllamaChat.CONVERSA_OBTER_RESPOSTA_IA)
 public class IntegracaoRestIntollamaConversaObterRespostaIa extends AcaoApiIntegracaoAbstrato {
 
-    private static final String NOME_MODELO = "tinyllama:1.1b";
-
     public IntegracaoRestIntollamaConversaObterRespostaIa(
             final FabTipoAgenteClienteApi pTipoAgente,
             final ItfUsuario pUsuario,
@@ -23,9 +21,10 @@ public class IntegracaoRestIntollamaConversaObterRespostaIa extends AcaoApiInteg
 
     @Override
     public String gerarCorpoRequisicao() {
-        String mensagem = (String) getParametros()[0];
+        String nomeModelo = (String) getParametros()[0];
+        String mensagem = (String) getParametros()[1];
         JsonObject json = Json.createObjectBuilder()
-                .add("model", NOME_MODELO)
+                .add("model", nomeModelo)
                 .add("prompt", mensagem)
                 .add("stream", false)
                 .build();

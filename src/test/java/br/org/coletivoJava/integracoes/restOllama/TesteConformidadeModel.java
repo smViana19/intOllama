@@ -1,9 +1,8 @@
 package br.org.coletivoJava.integracoes.restOllama;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.integracao.rocketChat.implementacaoRCRest.ConfigCoreOllamaTestesRegraNegocio;
+import br.org.coletivoJava.integracoes.ollama.ConfigCoreOllamaTestesRegraNegocio;
 import org.junit.Test;
-import testesFW.TesteJUnitBasicoSemPersistencia;
 import testesFW.TesteJunit;
 
 public class TesteConformidadeModel extends TesteJunit {

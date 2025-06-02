@@ -1,7 +1,7 @@
 package br.org.coletivoJava.integracoes.ollama.api.util;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.integracao.rocketChat.implementacaoRCRest.ConfigCoreOllamaTestesRegraNegocio;
+import br.org.coletivoJava.integracoes.ollama.ConfigCoreOllamaTestesRegraNegocio;
 import org.junit.Test;
 
 public class UtilOllamaConversasTest  {

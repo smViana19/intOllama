@@ -9,7 +9,7 @@ import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOllamaChat;
 import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOllamaAgenteModel;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.integracao.rocketChat.implementacaoRCRest.ConfigCoreOllamaTestesRegraNegocio;
+import br.org.coletivoJava.integracoes.ollama.ConfigCoreOllamaTestesRegraNegocio;
 import org.junit.Test;
 import testes.testesSupers.TestesApiRest;
 
