@@ -3,7 +3,7 @@ package br.org.coletivoJava.integracoes.restIntollama.implementacao;
 import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOllamaAgenteModel;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
-import com.super_bits.modulosSB.SBCore.integracao.rocketChat.implementacaoRCRest.ConfigCoreOllamaTestesRegraNegocio;
+import br.org.coletivoJava.integracoes.ollama.ConfigCoreOllamaTestesRegraNegocio;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

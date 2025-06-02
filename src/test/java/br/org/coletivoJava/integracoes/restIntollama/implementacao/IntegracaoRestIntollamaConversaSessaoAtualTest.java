@@ -2,16 +2,14 @@ package br.org.coletivoJava.integracoes.restIntollama.implementacao;
 
 import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOllamaChat;
 import br.org.coletivoJava.integracoes.ollama.api.util.UtilOllamaConversas;
-import br.org.coletivoJava.integracoes.ollama.api.util.UtilOllamaConversasTest;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
-import com.super_bits.modulosSB.SBCore.integracao.rocketChat.implementacaoRCRest.ConfigCoreOllamaTestesRegraNegocio;
+import br.org.coletivoJava.integracoes.ollama.ConfigCoreOllamaTestesRegraNegocio;
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
 import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObject;
 import org.junit.Test;
-import org.slf4j.helpers.Util;
 
 import static org.junit.Assert.assertTrue;
 

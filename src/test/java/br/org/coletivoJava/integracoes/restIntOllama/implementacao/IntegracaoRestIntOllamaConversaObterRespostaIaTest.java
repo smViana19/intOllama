@@ -7,7 +7,7 @@ package br.org.coletivoJava.integracoes.restIntOllama.implementacao;
 import br.org.coletivoJava.integracoes.ollama.api.chat.FabApiRestOllamaChat;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
-import com.super_bits.modulosSB.SBCore.integracao.rocketChat.implementacaoRCRest.ConfigCoreOllamaTestesRegraNegocio;
+import br.org.coletivoJava.integracoes.ollama.ConfigCoreOllamaTestesRegraNegocio;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -17,11 +17,12 @@ import static org.junit.Assert.*;
  */
 public class IntegracaoRestIntOllamaConversaObterRespostaIaTest {
 
+    private static final String NOME_MODELO = "CasanovaIA:latest";
+
     @Test
     public void testeObterResposta() {
         SBCore.configurar(new ConfigCoreOllamaTestesRegraNegocio(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        ItfRespostaWebServiceSimples resposta = FabApiRestOllamaChat.CONVERSA_OBTER_RESPOSTA_IA.getAcao( "Gostei de você, explique-me o que é a formula de ohm").getResposta();
-        System.out.println("Resposta: " + resposta.getRespostaTexto());
+        ItfRespostaWebServiceSimples resposta = FabApiRestOllamaChat.CONVERSA_OBTER_RESPOSTA_IA.getAcao(NOME_MODELO, "Gostei de você, explique-me o que é a formula de ohm").getResposta();
         assertTrue(resposta.isSucesso());
     }
 }
