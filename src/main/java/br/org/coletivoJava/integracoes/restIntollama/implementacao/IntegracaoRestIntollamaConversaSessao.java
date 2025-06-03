@@ -11,50 +11,52 @@ import jakarta.json.*;
 
 @InfoIntegracaoRestIntollamaChat(tipo = FabApiRestOllamaChat.CONVERSA_SESSAO)
 public class IntegracaoRestIntollamaConversaSessao
-		extends
-			AcaoApiIntegracaoAbstrato {
+        extends
+        AcaoApiIntegracaoAbstrato {
 
-	public IntegracaoRestIntollamaConversaSessao(
-			final FabTipoAgenteClienteApi pTipoAgente,
-			final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
-		super(FabApiRestOllamaChat.CONVERSA_SESSAO, pTipoAgente, pUsuario,
-				pParametro);
-	}
+    public IntegracaoRestIntollamaConversaSessao(
+            final FabTipoAgenteClienteApi pTipoAgente,
+            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+        super(FabApiRestOllamaChat.CONVERSA_SESSAO, pTipoAgente, pUsuario,
+                pParametro);
+    }
 
-	@Override
-	public String gerarCorpoRequisicao() {
-		String novaMensagemUsuario = (String) getParametros()[0];
-		String chave = (String) getParametros()[1];
+    @Override
+    public String gerarCorpoRequisicao() {
+        String nomeModelo = (String) getParametros()[0];
+        String novaMensagemUsuario = (String) getParametros()[1];
+        String chave = (String) getParametros()[2];
+        String configuracaoSystemInicial = (String) getParametros()[3];
 
-		JsonObject conversa = UtilOllamaConversas.lerConversa(chave);
-		JsonArray mensagensAnteriores = conversa.getJsonArray("messages");
+        JsonObject conversa = UtilOllamaConversas.lerConversa(chave, configuracaoSystemInicial, nomeModelo);
+        JsonArray mensagensAnteriores = conversa.getJsonArray("messages");
 
-		JsonArrayBuilder mensagensArrayBuilder = Json.createArrayBuilder();
-		for(JsonValue mensagem : mensagensAnteriores){
-			mensagensArrayBuilder.add(mensagem);
-		}
-		mensagensArrayBuilder.add(Json.createObjectBuilder()
-				.add("role", "user")
-				.add("content", novaMensagemUsuario));
+        JsonArrayBuilder mensagensArrayBuilder = Json.createArrayBuilder();
+        for (JsonValue mensagem : mensagensAnteriores) {
+            mensagensArrayBuilder.add(mensagem);
+        }
+        mensagensArrayBuilder.add(Json.createObjectBuilder()
+                .add("role", "user")
+                .add("content", novaMensagemUsuario));
 
-		JsonObject jsonPrincipal = Json.createObjectBuilder()
-				.add("model", conversa.getString("model"))
-				.add("messages", mensagensArrayBuilder.build())
-				.add("stream", false)
-				.add("keep_alive", "10m")
-				.build();
+        JsonObject jsonPrincipal = Json.createObjectBuilder()
+                .add("model", conversa.getString("model"))
+                .add("messages", mensagensArrayBuilder.build())
+                .add("stream", false)
+                .add("keep_alive", "10m")
+                .build();
 
-		return jsonPrincipal.toString();
+        return jsonPrincipal.toString();
 
-	}
+    }
 
-	@Override
-	protected RespostaWebServiceSimples gerarRespostaTratamentoFino(RespostaWebServiceSimples pRespostaWSSemTratamento) {
+    @Override
+    protected RespostaWebServiceSimples gerarRespostaTratamentoFino(RespostaWebServiceSimples pRespostaWSSemTratamento) {
         try {
             UtilOlhamaTratamentoErro.gerarRespostaTratamentoFino(pRespostaWSSemTratamento);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return pRespostaWSSemTratamento;
-	}
+    }
 }

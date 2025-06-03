@@ -36,7 +36,6 @@ public class IntegracaoRestIntollamaConversaSessaoAtualTest {
                         "- Não invente informações. Se não souber, diga que não sabe.";
 
         JsonObject conversa = UtilOllamaConversas.lerConversa(chaveConversa);
-        System.out.println(conversa);
         UtilOllamaConversas.adicionarMensagem(chaveConversa, "user", "a casanovadigital é uma empresa de marketing digital?");
 
         JsonObject conversaAtualizada = UtilOllamaConversas.lerConversa(chaveConversa);

@@ -23,6 +23,7 @@ public class IntegracaoRestIntOllamaConversaObterRespostaIaTest {
     public void testeObterResposta() {
         SBCore.configurar(new ConfigCoreOllamaTestesRegraNegocio(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
         ItfRespostaWebServiceSimples resposta = FabApiRestOllamaChat.CONVERSA_OBTER_RESPOSTA_IA.getAcao(NOME_MODELO, "Gostei de você, explique-me o que é a formula de ohm").getResposta();
+        System.out.println(resposta.getRespostaTexto());
         assertTrue(resposta.isSucesso());
     }
 }

@@ -16,14 +16,20 @@ import java.io.*;
  * @author salvio
  */
 public class UtilOllamaConversas {
-    private static final String LOCAL_ARQUIVOS_JSON = SBCore.getServicoArquivosDeEntidade().getEndrLocalResources()+"/Ollama/conversasOllama/";
+    //    private static final String LOCAL_ARQUIVOS_JSON = SBCore.getServicoArquivosDeEntidade().getEndrLocalResources()+"/Ollama/conversasOllama/";
+    private static final String LOCAL_ARQUIVOS_JSON = "/home/superBits/projetos/coletivoJava/source/erpColetivoJava/SbErpIAOllama/src/main/resources/";
     private static final String MODELO = "CasanovaIA:latest";
 
-    public static JsonObject lerConversa(String pChave) {
-        return lerConversa(pChave, null);
+
+    public static JsonObject lerConversa(String pChave, String pModel) {
+        return lerConversa(pChave, pModel, null);
     }
 
-    public static JsonObject lerConversa(String pChave, String pPromptPersona) {
+    public static JsonObject lerConversa(String pChave) {
+        return lerConversa(pChave, null, null);
+    }
+
+    public static JsonObject lerConversa(String pChave, String pPromptPersona, String pModel) {
         File arquivo = getArquivoConversa(pChave);
 
         if (!arquivo.exists()) {
@@ -38,7 +44,7 @@ public class UtilOllamaConversas {
                         .add("content", pPromptPersona));
             }
             JsonObject novaConversa = Json.createObjectBuilder()
-                    .add("model", MODELO)
+                    .add("model", pModel)
                     .add("messages", mensagens)
                     .build();
             try (JsonWriter escreverJson = Json.createWriter(new FileWriter(arquivo))) {
@@ -61,8 +67,8 @@ public class UtilOllamaConversas {
         return new File(endereco);
     }
 
-    public static void adicionarMensagem(String pChave, String pRole, String pContent) {
-        JsonObject conversa = lerConversa(pChave);
+    public static void adicionarMensagem(String pChave, String pRole, String pContent, String pPromptSystem, String pModel) {
+        JsonObject conversa = lerConversa(pChave, pPromptSystem, pModel);
         JsonArray mensagensAntigas = conversa.getJsonArray("messages");
         JsonArrayBuilder mensagensNovasBuilder = Json.createArrayBuilder();
 
@@ -81,6 +87,11 @@ public class UtilOllamaConversas {
         } catch (IOException e) {
             throw new RuntimeException(" Erro ao salvar conversa" + e);
         }
+    }
+
+
+    public static void adicionarMensagem(String pChave, String pRole, String pContent) {
+        adicionarMensagem(pChave, pRole, pContent, null, null);
     }
 
     public static String carregarPersona(String pConfiguracaoPersona) {
