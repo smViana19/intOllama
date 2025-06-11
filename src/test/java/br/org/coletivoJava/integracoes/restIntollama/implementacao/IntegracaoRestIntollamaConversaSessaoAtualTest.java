@@ -21,6 +21,7 @@ public class IntegracaoRestIntollamaConversaSessaoAtualTest {
         ItfRespostaWebServiceSimples respostaCriacao = FabApiRestOllamaChat.CONVERSA_SESSAO.getAcao("Qual é a sua função?").getResposta();
         System.out.println("Resposta: " + respostaCriacao.getRespostaTexto());
         assertTrue(respostaCriacao.isSucesso());
+
     }
 
     @Test

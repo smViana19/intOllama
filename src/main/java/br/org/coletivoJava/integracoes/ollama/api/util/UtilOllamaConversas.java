@@ -4,13 +4,12 @@
  */
 package br.org.coletivoJava.integracoes.ollama.api.util;
 
-import com.google.gson.GsonBuilder;
-import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
 import jakarta.json.*;
 
-
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * @author salvio
