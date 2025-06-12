@@ -13,7 +13,15 @@ public class IntegracaoRestIntollamaModeloCriarTest {
     @Test
     public void testeCriarModelo() {
         SBCore.configurar(new ConfigCoreOllamaTestesRegraNegocio(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
-        ItfRespostaWebServiceSimples respostaCriacao = FabApiRestOllamaAgenteModel.MODELO_CRIAR.getAcao( "iaSam", "Você é o **iaSam**, assistente virtual especializado em atendimento ao cliente e ecrevera sempre em Portugues-Br").getResposta();
+
+        String nomeModelo = "testeIa";
+        String systemPrompt = "Você é o **testeIa**, assistente virtual especializado em solucionar duvidas de clientes sobre a nossa empresa que se chama Casanova digital";
+        String template = "chat"; //instruction, chat, completion, qa
+        Double temperature = 0.7;
+        Boolean stream = false;
+//        String quantize = "q4_0";
+
+        ItfRespostaWebServiceSimples respostaCriacao = FabApiRestOllamaAgenteModel.MODELO_CRIAR.getAcao(nomeModelo, systemPrompt, template, temperature, stream).getResposta();
         System.out.println("Resposta: " + respostaCriacao.getRespostaTexto());
         assertTrue(respostaCriacao.isSucesso());
     }
