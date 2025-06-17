@@ -47,7 +47,7 @@ public enum FabApiRestOllamaAgenteModel implements ItfFabricaIntegracaoRest {
      */
     @InfoConsumoRestService(getPachServico = "/api/create",
             tipoConexao = FabTipoConexaoRest.POST,
-            parametrosPost = {"model", "system"},
+            parametrosPost = {"model", "system", "template", "temperature", "stream", "quantize"},
             aceitarCertificadoDeHostNaoConfiavel = true,
             urlDocumentacao = "https://github.com/ollama/ollama/blob/main/docs/api.md")
     MODELO_CRIAR,
